@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 	var direction := transform.basis * Vector3(0, 0, walk)
 	
 	if direction:
+		#print(direction)
 		#It's important to keep x axis even if the z axis is the only axis that is modified, because it wouldn't be able to move in any other directions other than it's z axis??
 		velocity.x = direction.x * SPEED * delta
 		velocity.z = direction.z * SPEED * delta
@@ -27,7 +28,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	if rot:
+	if rot >= 0.16 || rot <= -0.16:
 		rotate_object_local(Vector3(0,1,0), rot * ROT_SPEED * delta)
 		#print(DebugCamera.rotation_degrees)
 	else:
