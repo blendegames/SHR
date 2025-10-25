@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4gd0wv6cer13"]
+[gd_scene load_steps=20 format=3 uid="uid://4gd0wv6cer13"]
 
 [ext_resource type="Material" uid="uid://cgto7aitga73x" path="res://Materials/FloorTest.tres" id="1_f3nxq"]
 [ext_resource type="Script" uid="uid://cy1f8bl6cqpgy" path="res://Code/DebuggingFPS.gd" id="1_r5nid"]
@@ -32,14 +32,30 @@ sky = SubResource("Sky_5cr4c")
 reflected_light_source = 2
 tonemap_mode = 2
 ssao_enabled = true
-fog_density = 0.1344
+fog_light_color = Color(0.33017683, 0.35973227, 0.40571648, 1)
+fog_density = 0.2613
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.2
-volumetric_fog_length = 20.0
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.70796657, 0.7079665, 0.7079665, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8iyb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_808s8"]
+
+[sub_resource type="Gradient" id="Gradient_mtg6t"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5cr4c"]
+
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6r0k1"]
+width = 128
+height = 128
+depth = 128
+noise = SubResource("FastNoiseLite_5cr4c")
+color_ramp = SubResource("Gradient_mtg6t")
+
+[sub_resource type="FogMaterial" id="FogMaterial_3l0ph"]
+density = 0.5
+density_texture = SubResource("NoiseTexture3D_6r0k1")
 
 [node name="MainTestScene" type="Node3D"]
 script = ExtResource("1_r5nid")
@@ -117,3 +133,8 @@ fov = 60.0
 script = ExtResource("7_5cr4c")
 PlayerBody = NodePath("../HMBody")
 radius = 2.5
+
+[node name="FogVolume" type="FogVolume" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2558336, -2.5)
+size = Vector3(20, 10, 20)
+material = SubResource("FogMaterial_3l0ph")
