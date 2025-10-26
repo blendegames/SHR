@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://crr7fj0xss380"]
+
+[ext_resource type="PackedScene" uid="uid://dthopewr65ksg" path="res://3DModels/harry_mason/scene.gltf" id="1_ppf2a"]
+
+[node name="HarryMason" instance=ExtResource("1_ppf2a")]
+
+[node name="Sketchfab_model" parent="." index="0"]
+transform = Transform3D(-110, 8.407016e-13, 9.616506e-06, 0, -110, 9.616506e-06, 9.616506e-06, 9.616506e-06, 110, 0, 0, 0)

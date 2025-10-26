@@ -31,6 +31,6 @@ func _physics_process(delta: float) -> void:
 		#global_position.x = PlayerBody.global_position.x + position_cam_x
 		#global_position.z = PlayerBody.global_position.z + position_cam_z
 		
-		global_position = global_position.lerp(Vector3(PlayerBody.global_position.x + position_cam_x, PlayerBody.global_position.y + 1.2, PlayerBody.global_position.z + position_cam_z), delta * speed)
+		global_position = global_position.lerp(Vector3(PlayerBody.global_position.x + position_cam_x, PlayerBody.global_position.y + 2.2, PlayerBody.global_position.z + position_cam_z), delta * speed)
 	elif state == States.SIDEWALK:
 		pass

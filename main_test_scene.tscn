@@ -1,18 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://4gd0wv6cer13"]
+[gd_scene load_steps=21 format=3 uid="uid://4gd0wv6cer13"]
 
 [ext_resource type="Material" uid="uid://cgto7aitga73x" path="res://Materials/FloorTest.tres" id="1_f3nxq"]
 [ext_resource type="Script" uid="uid://cy1f8bl6cqpgy" path="res://Code/DebuggingFPS.gd" id="1_r5nid"]
 [ext_resource type="Material" uid="uid://cxyjdj5l2n56q" path="res://Materials/WallTest.tres" id="2_lc78t"]
 [ext_resource type="Script" uid="uid://b6nfhqkg6ypju" path="res://Code/PlayerMovement.gd" id="3_808s8"]
-[ext_resource type="Material" uid="uid://ckk8rargyugsk" path="res://Materials/PlayerTest.tres" id="3_g8iyb"]
 [ext_resource type="Script" uid="uid://ci67hs5ru28pw" path="res://Code/CameraCode.gd" id="7_5cr4c"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_r5nid"]
-lightmap_size_hint = Vector2i(12, 12)
-add_uv2 = true
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_g8iyb"]
-data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+[ext_resource type="VoxelGIData" uid="uid://b87vl8gi4e8hf" path="res://BakedGI/main_test_scene.VoxelGI_data.res" id="7_6r0k1"]
+[ext_resource type="PackedScene" uid="uid://crr7fj0xss380" path="res://harry_mason.tscn" id="8_6r0k1"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_mtg6t"]
 lightmap_size_hint = Vector2i(14, 21)
@@ -20,6 +14,12 @@ add_uv2 = true
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_808s8"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r5nid"]
+material = ExtResource("1_f3nxq")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mtg6t"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mtg6t"]
 
@@ -37,41 +37,31 @@ fog_density = 0.2613
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.70796657, 0.7079665, 0.7079665, 1)
+volumetric_fog_length = 20.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g8iyb"]
+[sub_resource type="Gradient" id="Gradient_5cr4c"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_808s8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6r0k1"]
 
-[sub_resource type="Gradient" id="Gradient_mtg6t"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5cr4c"]
-
-[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_6r0k1"]
+[sub_resource type="NoiseTexture3D" id="NoiseTexture3D_3l0ph"]
 width = 128
 height = 128
-depth = 128
-noise = SubResource("FastNoiseLite_5cr4c")
-color_ramp = SubResource("Gradient_mtg6t")
+noise = SubResource("FastNoiseLite_6r0k1")
+color_ramp = SubResource("Gradient_5cr4c")
 
-[sub_resource type="FogMaterial" id="FogMaterial_3l0ph"]
-density = 0.5
-density_texture = SubResource("NoiseTexture3D_6r0k1")
+[sub_resource type="FogMaterial" id="FogMaterial_2b3lv"]
+density = 0.4
+density_texture = SubResource("NoiseTexture3D_3l0ph")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_3l0ph"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6r0k1"]
+size = Vector3(0.6, 2, 0.6)
 
 [node name="MainTestScene" type="Node3D"]
 script = ExtResource("1_r5nid")
 
 [node name="environment" type="Node3D" parent="."]
-
-[node name="Floor" type="MeshInstance3D" parent="environment"]
-transform = Transform3D(9.999987, -0.007773194, 0.0143929, 0.007785033, 9.999994, -0.0082565285, -0.014386499, 0.008267674, 9.999986, 0, 0, 0)
-material_override = ExtResource("1_f3nxq")
-mesh = SubResource("PlaneMesh_r5nid")
-skeleton = NodePath("../..")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="environment/Floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="environment/Floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_g8iyb")
 
 [node name="Wall" type="MeshInstance3D" parent="environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5010445, 1.6583222)
@@ -83,6 +73,16 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="environment/Wall/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_808s8")
+
+[node name="Floor" type="MeshInstance3D" parent="environment"]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_r5nid")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="environment/Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="environment/Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_mtg6t")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7450438, 1.0954878)
@@ -101,40 +101,30 @@ environment = SubResource("Environment_r5nid")
 transform = Transform3D(1, 0, 0, 0, 0.5716162, 0.82052106, 0, -0.82052106, 0.5716162, 0, 4.291278, 0)
 light_angular_distance = 0.5
 shadow_enabled = true
-shadow_blur = 2.5
 directional_shadow_blend_splits = true
 directional_shadow_fade_start = 1.0
 directional_shadow_max_distance = 20.0
 directional_shadow_pancake_size = 10.0
 
-[node name="HMBody" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.8076092, 0, 0.58971804, 0, 1, 0, -0.58971804, 0, 0.8076092, 0, 1.0145206, 0)
-script = ExtResource("3_808s8")
-SPEED = 100.0
-ROT_SPEED = 2.9
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HMBody"]
-transform = Transform3D(1, 0, 0, 0, 0.915, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_g8iyb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HMBody"]
-transform = Transform3D(1, 0, 0, 0, 0.915, 0, 0, 0, 1, 0, 0, 0)
-material_override = ExtResource("3_g8iyb")
-mesh = SubResource("CapsuleMesh_808s8")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="HMBody"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.13593602, 0)
-material_override = ExtResource("3_g8iyb")
-size = Vector3(0.8, 0.8, 0.8)
-
 [node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("PlayerBody")]
 transform = Transform3D(1, 0, 0, 0, 0.95577246, 0.29410708, 0, -0.29410708, 0.95577246, 0, 2, 2)
 fov = 60.0
 script = ExtResource("7_5cr4c")
-PlayerBody = NodePath("../HMBody")
+PlayerBody = NodePath("../HarryMason")
 radius = 2.5
 
 [node name="FogVolume" type="FogVolume" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.2558336, -2.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.256, 0)
 size = Vector3(20, 10, 20)
-material = SubResource("FogMaterial_3l0ph")
+material = SubResource("FogMaterial_2b3lv")
+
+[node name="VoxelGI" type="VoxelGI" parent="."]
+camera_attributes = SubResource("CameraAttributesPractical_3l0ph")
+data = ExtResource("7_6r0k1")
+
+[node name="HarryMason" parent="." instance=ExtResource("8_6r0k1")]
+script = ExtResource("3_808s8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HarryMason"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_6r0k1")

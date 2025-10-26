@@ -101,6 +101,7 @@ common/physics_interpolation=true
 [rendering]
 
 rendering_device/fallback_to_d3d12=false
+lights_and_shadows/directional_shadow/size=8192
 global_illumination/gi/use_half_resolution=true
 environment/volumetric_fog/volume_size=128
 environment/volumetric_fog/use_filter=0

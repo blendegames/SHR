@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
 
-@export_range(0.0, 300.0) var SPEED : float
-@export_range(0.0,10.0) var ROT_SPEED : float
+@export_range(0.0, 300.0) var SPEED : float = 100.0
+@export_range(0.0,10.0) var ROT_SPEED : float = 2.9
 
 #@export var DebugCamera : Camera3D
 
